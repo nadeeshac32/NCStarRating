@@ -6,21 +6,17 @@ import PackageDescription
 let package = Package(
     name: "NCStarRating",
     platforms: [
-        .iOS(.v17)
+        .iOS(.v17), .macOS(.v14)
     ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "NCStarRating",
-            targets: ["NCStarRating"]
-        ),
+        .library(name: "NCStarRatings", targets: ["NCStarRating"]),
+        .library(name: "MySDK1", targets: ["CoreModels"]),
+        .library(name: "MySDK2", targets: ["CoreModels", "Network"])
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "NCStarRating"
-        ),
+        .target(name: "NCStarRating"),
+        .target(name: "CoreModels", dependencies: []),
+        .target(name: "Network", dependencies: ["CoreModels"])
 
     ]
 )

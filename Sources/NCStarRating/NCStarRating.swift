@@ -12,11 +12,11 @@ public struct NCStarRating: View {
     var maxRating: Int
     @Binding var currentRating: Int
     var width:Int
-    var color: UIColor
+    var color: Color
     var openSFSymbol:String
     var fillSFSymbol:String
     
-    public init(maxRating: Int, currentRating: Binding<Int>, width: Int = 30, color: UIColor = UIColor.systemYellow, openSFSymbol: String = "star", fillSFSymbol: String = "star.fill") {
+    public init(maxRating: Int, currentRating: Binding<Int>, width: Int = 30, color: Color = Color.yellow, openSFSymbol: String = "star", fillSFSymbol: String = "star.fill") {
         self.maxRating = maxRating
         self._currentRating = currentRating
         self.width = width
@@ -27,11 +27,11 @@ public struct NCStarRating: View {
     
     public var body: some View {
         HStack {
-            ForEach(0 ..< maxRating) { rating in
+            ForEach(0..<maxRating, id: \.self) { rating in
                 Image(systemName: rating < self.currentRating ? self.fillSFSymbol : self.openSFSymbol)
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(Color(self.color))
+                    .foregroundColor(self.color)
                     .onTapGesture {
                         self.currentRating = rating+1
                 }
