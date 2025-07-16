@@ -9,14 +9,14 @@ let package = Package(
         .iOS(.v17), .macOS(.v14)
     ],
     products: [
-        .library(name: "NCStarRatings", targets: ["NCStarRating"]),
-        .library(name: "MySDK1", targets: ["CoreModels"]),
-        .library(name: "MySDK2", targets: ["CoreModels", "Network"])
+        .library(name: "NCStarRating", targets: ["NCStarRating"]),
+        .library(name: "MySDK1", targets: ["NCCoreModels"]),
+        .library(name: "MySDK2", targets: ["NCCoreModels", "NCNetwork"])
     ],
     targets: [
         .target(name: "NCStarRating"),
-        .target(name: "CoreModels", dependencies: []),
-        .target(name: "Network", dependencies: ["CoreModels"])
+        .target(name: "NCCoreModels", dependencies: []),
+        .target(name: "NCNetwork", dependencies: ["NCCoreModels"])
 
     ]
 )
