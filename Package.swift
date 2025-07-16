@@ -10,7 +10,7 @@ let package = Package(
     ],
     products: [
         .library(name: "NCStarRating", targets: ["NCStarRating"]),
-        .library(name: "MySDK1", targets: ["NCCoreModels"]),
+        .library(name: "NCCoreModels", targets: ["NCCoreModels"]),
         .library(name: "MySDK2", targets: ["NCCoreModels", "NCNetwork"])
     ],
     targets: [
